@@ -9,7 +9,7 @@ http://wkhtmltopdf.org/
 ###示例
     $wkhtmltopdf = new Wkhtmltopdf(array(
         "path"    => __DIR__ . "/pdfs/",
-        "binpath" => __DIR__. "/wkhtmltopdf"
+        "binpath" => __DIR__. "/bin/wkhtmltopdf"
     ));
     $wkhtmltopdf->setTitle("yuyi");
     $wkhtmltopdf->setMinimumFontSize(60);
