@@ -124,13 +124,13 @@ class Wkhtmltopdf
         }
 		
         if (!array_key_exists('path', $options)) {
-            throw new Exception("Path to directory where to store files is not set");
+            throw new \Exception("Path to directory where to store files is not set");
         }
 		
 
         if (!is_writable($options['path']))
         {
-            throw new Exception("Path to directory where to store files is not writable");
+            throw new \Exception("Path to directory where to store files is not writable");
         }
         
         $this->setPath($options['path']);
@@ -268,7 +268,7 @@ class Wkhtmltopdf
      *     * left   : sets the margin on the left of the PDF
      *     * right  : sets the margin on the right of the PDF
      *   * Value : size of the margin (positive integer). Null to leave the default one.
-     * @return Wkhtmltopdf $this
+     * @return self $this
      */
     public function setMargins($margins)
     {
@@ -330,7 +330,7 @@ class Wkhtmltopdf
      *
      * @param $options array<option => value> The additional options to set.
      *   For command line options with no value, set $options value to NULL.
-     * @return Wkhtmltopdf $this
+     * @return self $this
      */
     public function setOptions($options)
     {
@@ -355,7 +355,7 @@ class Wkhtmltopdf
      * @author Roman M. Kos <roman[at]c-o-s.name>
      * @param string $windowStatus
      *    we add a `--window-status {$windowStatus}` for execution to `$this->_bin`
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setWindowStatus($windowStatus)
     {
@@ -380,7 +380,7 @@ class Wkhtmltopdf
      *
      * @author aur1mas <aur1mas@devnet.lt>
      * @param string $html
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setHtml($html)
     {
@@ -404,7 +404,7 @@ class Wkhtmltopdf
      *
      * @author Charles SANQUER
      * @param string $html
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setUrl($url)
     {
@@ -427,14 +427,14 @@ class Wkhtmltopdf
      * Absolute path where to store files.
      *
      * @author aur1mas <aur1mas@devnet.lt>
-     * @throws Exception
+     * @throws \Exception
      * @param string $path
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setPath($path)
     {
         if (realpath($path) === false) {
-            throw new Exception("Path must be absolute");
+            throw new \Exception("Path must be absolute");
         }
 
         $this->_path = realpath($path) . DIRECTORY_SEPARATOR;
@@ -457,7 +457,7 @@ class Wkhtmltopdf
      *
      * @author aur1mas <aur1mas@devnet.lt>
      * @param string $orientation
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setOrientation($orientation)
     {
@@ -481,7 +481,7 @@ class Wkhtmltopdf
      *
      * @author aur1mas <aur1mas@devnet.lt>
      * @param string $size
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setPageSize($size)
     {
@@ -528,7 +528,7 @@ class Wkhtmltopdf
      *
      * @author aur1mas <aur1mas@devnet.lt>
      * @param boolean $toc
-     * @return Wkhtmltopdf
+     * @return self
      */
     public function setTOC($toc = true)
     {
@@ -601,7 +601,7 @@ class Wkhtmltopdf
      *
      * @author aur1mas <aur1mas@devnet.lt>
      * @param boolean $mode
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setGrayscale($mode)
     {
@@ -624,7 +624,7 @@ class Wkhtmltopdf
      * If TRUE, runs wkhtmltopdf in a virtual X session.
      *
      * @param bool $xvfb
-     * @return Wkthmltopdf
+     * @return self
      */
     public function setRunInVirtualX($xvfb)
     {
@@ -671,7 +671,7 @@ class Wkhtmltopdf
      * Returns PDF document title.
      *
      * @author aur1mas <aur1mas@devnet.lt>
-     * @throws Exception
+     * @throws \Exception
      * @return string
      */
     public function getTitle()
@@ -854,13 +854,13 @@ class Wkhtmltopdf
      * @todo use file cache
      *
      * @author aur1mas <aur1mas@devnet.lt>
-     * @throws Exception
+     * @throws \Exception
      * @return string
      */
     protected function _render()
     {
         if (mb_strlen($this->_html, 'utf-8') === 0 && empty($this->_url)) {
-            throw new Exception("HTML content or source URL not set");
+            throw new \Exception("HTML content or source URL not set");
         }
 
         if ($this->getUrl()) {
@@ -873,15 +873,15 @@ class Wkhtmltopdf
         $content = $this->_exec(str_replace('%input%', $input, $this->_getCommand()));
 
         if (strpos(mb_strtolower($content['stderr']), 'error')) {
-            throw new Exception("System error <pre>" . $content['stderr'] . "</pre>");
+            throw new \Exception("System error <pre>" . $content['stderr'] . "</pre>");
         }
 
         if (mb_strlen($content['stdout'], 'utf-8') === 0) {
-            throw new Exception("WKHTMLTOPDF didn't return any data");
+            throw new \Exception("WKHTMLTOPDF didn't return any data");
         }
 
         if ((int)$content['return'] > 1) {
-            throw new Exception("Shell error, return code: " . (int)$content['return']);
+            throw new \Exception("Shell error, return code: " . (int)$content['return']);
         }
 
         return $content['stdout'];
@@ -918,7 +918,7 @@ class Wkhtmltopdf
                         unlink($filepath);
                     exit();
                 } else {
-                    throw new Exception("Headers already sent");
+                    throw new \Exception("Headers already sent");
                 }
                 break;
             case self::MODE_STRING:
@@ -941,7 +941,7 @@ class Wkhtmltopdf
                     }
                     exit();
                 } else {
-                    throw new Exception("Headers already sent");
+                    throw new \Exception("Headers already sent");
                 }
                 break;
             case self::MODE_SAVE:
@@ -952,7 +952,7 @@ class Wkhtmltopdf
                 }
                 break;
             default:
-                throw new Exception("Mode: " . $mode . " is not supported");
+                throw new \Exception("Mode: " . $mode . " is not supported");
         }
     }
 }

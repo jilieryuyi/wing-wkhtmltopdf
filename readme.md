@@ -14,5 +14,5 @@ http://wkhtmltopdf.org/
     $wkhtmltopdf->setTitle("yuyi");
     $wkhtmltopdf->setMinimumFontSize(60);
     $wkhtmltopdf->setPageSize("A4");
-    $wkhtmltopdf->setHtml(file_get_contents($url));
-    $wkhtmltopdf->output(Wkhtmltopdf::MODE_SAVE, $title.".pdf");
+    $wkhtmltopdf->setUrl("http://www.itdfy.com/details/863");
+    $wkhtmltopdf->output(Wkhtmltopdf::MODE_SAVE, "yuyi.pdf");

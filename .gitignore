@@ -7,3 +7,7 @@
 /*.log
 /*/*.log
 /*/*/*.log
+/bin/wkhtmltopdf
+/bin
+/tests/*.html
+/tests/*.pdf
