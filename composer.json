@@ -1,0 +1,42 @@
+{
+  "name": "wing/wkhtmltopdf",
+  "type": "library",
+  "description": "wkhtmltopdf helper",
+  "keywords": ["wkhtmltopdf","php","pdf"],
+  "homepage": "http://www.itdfy.com/",
+  "support": {
+    "issues": "https://www.itdfy.com/",
+    "email":"297341015@qq.com"
+  },
+  "authors": [
+    {
+      "name": "yuyi",
+      "email": "297341015@qq.com",
+      "homepage": "http://www.itdfy.com/"
+    }
+  ],
+  "repositories":[
+    {
+      "type": "composer",
+      "url": "http://packagist.phpcomposer.com"
+    },
+    {
+      "packagist": false
+    }
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "secure-http": false
+  },
+  "require": {
+    "php": ">=5.0"
+  },
+  "autoload": {
+    "psr-4": {"Wing\\Wkhtmltopdf\\": "src/"}
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
