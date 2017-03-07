@@ -14,14 +14,14 @@ class Wkhtmltopdf
      * Setters / Getters properties.
      */
     protected $_html = null;
-    protected $_url = null;
+    protected $_url  = null;
     protected $_orientation = null;
-    protected $_pageSize = null;
-    protected $_toc = false;
+    protected $_pageSize    = null;
+    protected $_toc    = false;
     protected $_copies = 1;
     protected $_grayscale = false;
     protected $_title = null;
-    protected $_xvfb = false;
+    protected $_xvfb  = false;
     protected $_path;               // path to directory where to place files
     protected $_zoom = 1;
 	protected $_headerSpacing;
@@ -44,22 +44,30 @@ class Wkhtmltopdf
     /**
      * Available page orientations.
      */
-    const ORIENTATION_PORTRAIT = 'Portrait';    // vertical
-    const ORIENTATION_LANDSCAPE = 'Landscape';  // horizontal
+    const ORIENTATION_PORTRAIT  = 'Portrait';    // vertical
+    const ORIENTATION_LANDSCAPE = 'Landscape';   // horizontal
 
     /**
      * Page sizes.
      */
+    const SIZE_A0 = 'A0';
+    const SIZE_A1 = 'A1';
+    const SIZE_A2 = 'A2';
+    const SIZE_A3 = 'A3';
     const SIZE_A4 = 'A4';
+    const SIZE_A5 = 'A5';
+    const SIZE_A6 = 'A6';
+    const SIZE_A7 = 'A7';
+    const SIZE_A8 = 'A8';
     const SIZE_LETTER = 'letter';
 
     /**
      * File get modes.
      */
     const MODE_DOWNLOAD = 0;
-    const MODE_STRING = 1;
+    const MODE_STRING   = 1;
     const MODE_EMBEDDED = 2;
-    const MODE_SAVE = 3;
+    const MODE_SAVE     = 3;
 
     /**
      * @author aur1mas <aur1mas@devnet.lt>
